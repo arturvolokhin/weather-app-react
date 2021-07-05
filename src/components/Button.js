@@ -1,5 +1,5 @@
 const Button = (props) => {
-    const {classes, text, searchCity, getMyGeolocation} = props;
+    const {classes, text, searchCity, getMyGeolocation, toggleModal} = props;
 
     const handleClick = (target) => {
         if (target.classList.contains('button-search')) {
@@ -7,7 +7,7 @@ const Button = (props) => {
         }
 
         if (target.classList.contains('button-history')) {
-            console.log('history');
+            toggleModal();
         }
 
         if (target.classList.contains('button-geolocation')) {

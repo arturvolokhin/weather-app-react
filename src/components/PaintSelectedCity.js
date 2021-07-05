@@ -1,4 +1,4 @@
-const DataSelectedCity = ({data}) => {
+const PaintSelectedCity = ({data}) => {
     const {feelslike: feelsLike, cloudcover, wind_dir: wind,
         wind_speed: windSpeed, pressure} = data.current;
         
@@ -14,4 +14,4 @@ const DataSelectedCity = ({data}) => {
     )
 }
 
-export default DataSelectedCity;
+export default PaintSelectedCity;
