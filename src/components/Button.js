@@ -14,7 +14,7 @@ const Button = (props) => {
             getMyGeolocation();
         }
 
-        if(target.classList.contains('modal__delete')) {
+        if (target.classList.contains('modal__delete')) {
             clearModalContent();
         }
     }

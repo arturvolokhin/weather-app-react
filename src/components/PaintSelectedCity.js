@@ -3,14 +3,14 @@ const PaintSelectedCity = ({data}) => {
         wind_speed: windSpeed, pressure} = data.current;
         
     return(
-        <section className="main__data">
-            <p className="main__item main__item-time">Time: {data.location.localtime.slice(11, 16)}</p>
-            <p className="main__item main__item-feels">Feels like: {feelsLike}</p>
-            <p className="main__item main__item-cloudy">Cloudcover: {cloudcover}</p>
-            <p className="main__item main__item-wind">Wind: {wind}</p>
-            <p className="main__item main__item-speed">Wind speed: {windSpeed}</p>
-            <p className="main__item main__item-plessure">Pressure: {pressure}</p>
-        </section>
+        <ul className="main__data">
+            <li className="main__item main__item-time">Time: {data.location.localtime.slice(11, 16)}</li>
+            <li className="main__item main__item-feels">Feels like: {feelsLike}</li>
+            <li className="main__item main__item-cloudy">Cloudcover: {cloudcover}</li>
+            <li className="main__item main__item-wind">Wind: {wind}</li>
+            <li className="main__item main__item-speed">Wind speed: {windSpeed}</li>
+            <li className="main__item main__item-plessure">Pressure: {pressure}</li>
+        </ul>
     )
 }
 

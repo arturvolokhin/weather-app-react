@@ -17,12 +17,7 @@ function App() {
     
     useEffect(() => {
         const value = getElementInLocalStorage('enteredCityName');
-
-        if (value) {
-            setCity(value);
-        } else {
-            getGeolocation(setCity)
-        }
+        value ? setCity(value) : getGeolocation(setCity);
     }, [])
 
     useEffect(() => {
@@ -32,12 +27,12 @@ function App() {
                 .then(cityData => {
                     setData(cityData);
                     setElementInLocalStorage('enteredCity', cityData);
-                    updateLocalStorage();
                     setLoading(false);
                 })
                 .catch(alert);
-        }
-    }, [city] )
+            }
+            updateLocalStorage();
+        }, [city] )
     
     const getCityName = (name) => {
         setElementInLocalStorage('enteredCityName', name);

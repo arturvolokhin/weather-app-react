@@ -19,7 +19,11 @@ const Search = ({getCityName}) => {
                     type="text" minLength="2" maxLength="30" 
                     placeholder="Город"
                 />
-                <Button classes={'button-search'} text={'Search'} searchCity={() => handleClick()}/>
+                <Button 
+                    classes={'button-search'}
+                    text={'Search'}
+                    searchCity={() => handleClick()}
+                />
             </div>
         </>
     )
