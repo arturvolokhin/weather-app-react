@@ -7,6 +7,7 @@ const Search = ({getCityName}) => {
 
     const handleClick = () => {
         getCityName(value);
+        setValue('');
     }
 
     return(
@@ -14,6 +15,7 @@ const Search = ({getCityName}) => {
             <div className="search">
                 <input className="search__field" 
                     onChange={(e) => setValue(e.target.value)} 
+                    value = {value}
                     type="text" minLength="2" maxLength="30" 
                     placeholder="Город"
                 />
