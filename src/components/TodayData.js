@@ -3,10 +3,10 @@ const TodayData = () => {
         <>
             <div className="main__header">
                 <div className="main__weather">
-                    <h2 className="main__temperature"></h2>
-                    <img className="main__icon"/>
+                    <h2 className="main__temperature">34</h2>
+                    <img className="main__icon" alt='icon'/>
                 </div>
-                <h2 className="main__location"></h2>
+                <h2 className="main__location">'s'</h2>
                 <p className="main__today"></p>
             </div>
         </>
