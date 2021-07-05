@@ -1,11 +1,23 @@
+import React, {useState} from 'react'
 import Button from './Button'
 
-const Search = (props) => {
+const Search = ({getCityName}) => {  
+
+    const [value, setValue] = useState('');
+
+    const handleClick = () => {
+        getCityName(value);
+    }
+
     return(
         <>
             <div className="search">
-                <input type="text" className="search__field" minLength="2" maxLength="30" placeholder="Город"/>
-                <Button classes={'button-search'} text={'Search'}/>
+                <input className="search__field" 
+                    onChange={(e) => setValue(e.target.value)} 
+                    type="text" minLength="2" maxLength="30" 
+                    placeholder="Город"
+                />
+                <Button classes={'button-search'} text={'Search'} searchCity={() => handleClick()}/>
             </div>
         </>
     )
