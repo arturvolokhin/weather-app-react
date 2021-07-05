@@ -15,7 +15,6 @@ function App() {
         navigator.geolocation.getCurrentPosition(position => {
             const geo = `${position.coords.latitude.toFixed(4)},
                 ${position.coords.longitude.toFixed(4,)}`;   
-                console.log(geo);
             setCity(geo)
         });
 
@@ -50,7 +49,7 @@ function App() {
                     />
                 </div>
                 {!loading && <TodayData data={data}/> }
-                <DataSelectedCity/>
+                {!loading && <DataSelectedCity data={data}/>}
             </main>
         </>
     );
