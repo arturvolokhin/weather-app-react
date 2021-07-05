@@ -9,26 +9,30 @@ import './fonts/stylesheet.css'
 function App() {
     const [data, setData] = useState({});
     const [city, setCity] = useState('');
+    const [loading, setLoading] = useState(true);
     
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(position => {
             const geo = `${position.coords.latitude.toFixed(4)},
                 ${position.coords.longitude.toFixed(4,)}`;   
+                console.log(geo);
             setCity(geo)
         });
 
-    }, [city])
+    }, [])
 
     useEffect(() => {
-        setTimeout(() => {
             if (city.match(/[a-zA-Z0-9]/)) {
                 fetch(`http://api.weatherstack.com/current?access_key=92c98517a0c5f48d90bff7b0aad64226&query=${city}`)
                     .then(cityData => cityData.json())
-                    .then(cityData => setData(cityData))
+                    .then(cityData => {
+                        setData(cityData);
+                        setLoading(false);
+                    })
                     .catch(alert);
             }
-        }, 1000);
     }, [city] )
+    
 
 
     return (
@@ -45,7 +49,7 @@ function App() {
                         text={'History'}
                     />
                 </div>
-                <TodayData/>
+                {!loading && <TodayData data={data}/> }
                 <DataSelectedCity/>
             </main>
         </>
