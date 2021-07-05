@@ -1,5 +1,5 @@
 const Button = (props) => {
-    const {classes, text, searchCity, getMyGeolocation, toggleModal} = props;
+    const {classes, text, searchCity, getMyGeolocation, toggleModal, clearModalContent} = props;
 
     const handleClick = (target) => {
         if (target.classList.contains('button-search')) {
@@ -12,6 +12,10 @@ const Button = (props) => {
 
         if (target.classList.contains('button-geolocation')) {
             getMyGeolocation();
+        }
+
+        if(target.classList.contains('modal__delete')) {
+            clearModalContent();
         }
     }
 

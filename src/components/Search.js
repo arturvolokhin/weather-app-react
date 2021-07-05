@@ -7,7 +7,7 @@ const Search = ({getCityName}) => {
 
     const handleClick = () => {
         getCityName(value);
-        setValue('');
+        setValue(''); 
     }
 
     return(

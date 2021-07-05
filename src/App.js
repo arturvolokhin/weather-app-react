@@ -52,6 +52,11 @@ function App() {
         setToggle(!toggle);
     }
 
+    const clearModalContent = () => {
+        localStorage.removeItem('historyList');
+        setToggle(!toggle);
+    }
+
 
     return (
         <>
@@ -59,6 +64,7 @@ function App() {
                 <ModalHistory 
                     toggle={toggle}
                     toggleModal={toggleModal}
+                    clearModalContent={clearModalContent}
                     data={getElementInLocalStorage('historyList')}
                 />
                 <Search getCityName={getCityName}/>

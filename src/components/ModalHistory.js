@@ -1,7 +1,7 @@
 import Button from "./Button";
 import PaintModalHistoryItem from "./PaintModalHistoryItem";
 
-const ModalHistory = ({toggle, toggleModal, data}) => {
+const ModalHistory = ({toggle, toggleModal, clearModalContent, data}) => {
 
     const handleClick = () => {
         toggleModal();
@@ -13,6 +13,7 @@ const ModalHistory = ({toggle, toggleModal, data}) => {
                 <Button 
                     classes={'modal__delete'}
                     text={'Clear'}
+                    clearModalContent={() => clearModalContent()}
                 />
                 <div className="modal__close" onClick={() => handleClick()}></div>
             </div>
