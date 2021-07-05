@@ -10,4 +10,14 @@ const getElementInLocalStorage = (key) => {
     return JSON.parse(localStorage.getItem(key));
 }
 
-export { setElementInLocalStorage, getElementInLocalStorage };
+const updateLocalStorage = () => {
+    const enteredCity = getElementInLocalStorage('enteredCity');
+    const historyList = getElementInLocalStorage('historyList');
+
+    const arr = historyList.filter(city => city.location.name !== enteredCity.location.name)
+    arr.push(enteredCity);
+
+    setElementInLocalStorage('historyList', arr.reverse());
+}
+
+export { setElementInLocalStorage, getElementInLocalStorage, updateLocalStorage };

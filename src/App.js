@@ -4,7 +4,7 @@ import Button from './Components/Button';
 import TodayData from './Components/TodayData';
 import PaintSelectedCity from './Components/PaintSelectedCity'
 import getGeolocation from './Api/getGeolocation';
-import { getElementInLocalStorage, setElementInLocalStorage} from './Api/localStorage';
+import { getElementInLocalStorage, setElementInLocalStorage, updateLocalStorage} from './Api/localStorage';
 import ModalHistory from './Components/ModalHistory';
 import './main.css';
 import './fonts/stylesheet.css'
@@ -31,6 +31,8 @@ function App() {
                 .then(cityData => cityData.json())
                 .then(cityData => {
                     setData(cityData);
+                    setElementInLocalStorage('enteredCity', cityData);
+                    updateLocalStorage();
                     setLoading(false);
                 })
                 .catch(alert);
@@ -57,6 +59,7 @@ function App() {
                 <ModalHistory 
                     toggle={toggle}
                     toggleModal={toggleModal}
+                    data={getElementInLocalStorage('historyList')}
                 />
                 <Search getCityName={getCityName}/>
                 <div className="main__buttons">

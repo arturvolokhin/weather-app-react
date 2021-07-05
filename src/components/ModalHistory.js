@@ -1,11 +1,11 @@
 import Button from "./Button";
+import PaintModalHistoryItem from "./PaintModalHistoryItem";
 
-const ModalHistory = ({toggle, toggleModal}) => {
+const ModalHistory = ({toggle, toggleModal, data}) => {
 
     const handleClick = () => {
         toggleModal();
     }
-
 
     return(
         <div className={toggle ? 'modal visible' : 'modal'}>
@@ -16,7 +16,13 @@ const ModalHistory = ({toggle, toggleModal}) => {
                 />
                 <div className="modal__close" onClick={() => handleClick()}></div>
             </div>
-            <div className="modal__content"></div>
+            <div className="modal__content">
+                {data.map((city, index) => {
+                    return (
+                        <PaintModalHistoryItem data={city} key={index}/>
+                    )
+                })}
+            </div>
         </div>
     )
 }
