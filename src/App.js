@@ -6,7 +6,9 @@ import SelectedCity from './Components/SelectedCity'
 import getGeolocation from './Api/getGeolocation';
 import { getElementInLocalStorage, setElementInLocalStorage, updateLocalStorage} from './Api/localStorage';
 import ModalHistory from './Components/ModalHistory';
+import Preloader from './Components/Preloader';
 import './main.css';
+import './preloader.css';
 import './fonts/stylesheet.css'
 
 function App() {
@@ -88,7 +90,7 @@ function App() {
                         <TodayData data={data}/> 
                         <SelectedCity data={data}/>
                     </> :
-                    <h1>ЗАГРУЗКА</h1>
+                        <Preloader/>
                 }
             </main>
         </>
