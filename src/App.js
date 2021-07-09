@@ -49,7 +49,7 @@ function App() {
 
     const clearModalContent = () => {
         localStorage.removeItem('historyList');
-        setToggle(!toggle);
+        toggleModal();
     }
 
 
