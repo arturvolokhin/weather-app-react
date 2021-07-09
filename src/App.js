@@ -25,18 +25,25 @@ function App() {
             fetch(`http://api.weatherstack.com/current?access_key=c1a96e98043e9275277fc702971fe477&query=${city}`)
                 .then(cityData => cityData.json())
                 .then(cityData => {
-                    setData(cityData);
-                    setElementInLocalStorage('enteredCity', cityData);
-                    updateLocalStorage();
-                    setLoading(false);
+                    if (cityData.request) {
+                        setElementInLocalStorage('enteredCity', cityData);
+                        setElementInLocalStorage('enteredCityName', city);
+                        updateLocalStorage();
+                        setData(cityData);
+                        setLoading(false);
+                    } else {
+                        setCity('');
+                        setElementInLocalStorage('enteredCityName', '');
+                    }   
                 })
                 .catch(alert);
+            } else {
+                alert('Вы ввели не верные данные!');
             }
             
         }, [city] )
     
     const getCityName = (name) => {
-        setElementInLocalStorage('enteredCityName', name);
         setCity(name)
     }
 
