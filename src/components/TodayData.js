@@ -1,6 +1,7 @@
 const TodayData = ({data}) => {
     const {temperature, weather_icons: icon, weather_descriptions: today} = data.current;
     const {country, region, name} = data.location;
+    
     return(
         <>
             <div className="main__header">

@@ -8,7 +8,7 @@ import { getElementInLocalStorage, setElementInLocalStorage, updateLocalStorage}
 import ModalHistory from './Components/ModalHistory';
 import './main.css';
 import './fonts/stylesheet.css'
-setElementInLocalStorage('enteredCityName', 'Minsk');
+
 function App() {
     const [data, setData] = useState({});
     const [city, setCity] = useState('');
@@ -27,11 +27,12 @@ function App() {
                 .then(cityData => {
                     setData(cityData);
                     setElementInLocalStorage('enteredCity', cityData);
+                    updateLocalStorage();
                     setLoading(false);
                 })
                 .catch(alert);
             }
-            updateLocalStorage();
+            
         }, [city] )
     
     const getCityName = (name) => {
