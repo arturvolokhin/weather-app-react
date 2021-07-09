@@ -603,3 +603,15 @@ body {
 .visible {
   display: block;
 }
+
+.warning {
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 150px);
+    padding: 25px;
+    border-radius: 25px;
+    max-width: 300px;
+    min-height: 200px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+}

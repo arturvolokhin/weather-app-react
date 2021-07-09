@@ -1,26 +1,8 @@
 const Button = (props) => {
-    const {classes, text, searchCity, getMyGeolocation, toggleModal, clearModalContent} = props;
-
-    const handleClick = (target) => {
-        if (target.classList.contains('button-search')) {
-            searchCity(target);
-        }
-
-        if (target.classList.contains('button-history')) {
-            toggleModal();
-        }
-
-        if (target.classList.contains('button-geolocation')) {
-            getMyGeolocation();
-        }
-
-        if (target.classList.contains('modal__delete')) {
-            clearModalContent();
-        }
-    }
+    const {classes, text, onClick} = props;
 
     return(
-        <button className={'button ' + classes} onClick={(e) => handleClick(e.target)}>{text}</button>
+        <button className={'button ' + classes} onClick={onClick}>{text}</button>
     )
 }
 

@@ -7,6 +7,7 @@ import getGeolocation from './Api/getGeolocation';
 import { getElementInLocalStorage, setElementInLocalStorage, updateLocalStorage} from './Api/localStorage';
 import ModalHistory from './Components/ModalHistory';
 import Preloader from './Components/Preloader';
+import ModalWarning from './Components/ModalWarning';
 import './main.css';
 import './preloader.css';
 import './fonts/stylesheet.css'
@@ -16,6 +17,8 @@ function App() {
     const [city, setCity] = useState('');
     const [loading, setLoading] = useState(true);
     const [toggle, setToggle] = useState(false);
+    const [warningText, setWarningText] = useState('Сообщение об ошибке');
+    const [warning, setWarning] = useState(false);
     
     useEffect(() => {
         const value = getElementInLocalStorage('enteredCityName');
@@ -24,7 +27,7 @@ function App() {
 
     useEffect(() => {
         if (city.match(/[a-zA-Z0-9]/)) {
-            fetch(`http://api.weatherstack.com/current?access_key=c1a96e98043e9275277fc702971fe477&query=${city}`)
+            fetch(`http://api.weatherstack.com/current?access_key=a4e12e5116d7984ef04995125262dab8&query=${city}`)
                 .then(cityData => cityData.json())
                 .then(cityData => {
                     if (cityData.request) {
@@ -40,7 +43,8 @@ function App() {
                 })
                 .catch(alert);
             } else {
-                alert('Вы ввели не верные данные!');
+                setWarningText('Вы ввели не верные данные!');
+                setWarning(!warning);
             }
             
         }, [city] )
@@ -55,6 +59,10 @@ function App() {
 
     const toggleModal = () => {
         setToggle(!toggle);
+    }
+
+    const closeWarning = () => {
+        setWarning(!warning);
     }
 
     const clearModalContent = () => {
@@ -77,12 +85,12 @@ function App() {
                     <Button
                         classes={'button-geolocation'}
                         text={'My location'}
-                        getMyGeolocation={getMyGeolocation}
+                        onClick={getMyGeolocation}
                     />
                     <Button 
                         classes={'button-history'}
                         text={'History'}
-                        toggleModal={toggleModal}
+                        onClick={toggleModal}
                     />
                 </div>
                 {!loading ? 
@@ -92,6 +100,12 @@ function App() {
                     </> :
                         <Preloader/>
                 }
+
+                {warning ? <ModalWarning 
+                                text={warningText}
+                                closeWarning={closeWarning}
+                            /> : 
+                            null}
             </main>
         </>
     );

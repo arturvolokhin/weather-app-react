@@ -22,7 +22,7 @@ const Search = ({getCityName}) => {
                 <Button 
                     classes={'button-search'}
                     text={'Search'}
-                    searchCity={() => handleClick()}
+                    onClick={handleClick}
                 />
             </div>
         </>

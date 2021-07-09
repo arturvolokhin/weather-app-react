@@ -9,7 +9,7 @@ const ModalHistory = ({toggle, toggleModal, clearModalContent, data}) => {
                 <Button 
                     classes={'modal__delete'}
                     text={'Clear'}
-                    clearModalContent={() => clearModalContent()}
+                    onClick={clearModalContent}
                 />
                 <div className="modal__close" onClick={toggleModal}></div>
             </div>
