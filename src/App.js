@@ -8,7 +8,7 @@ import { getElementInLocalStorage, setElementInLocalStorage, updateLocalStorage}
 import ModalHistory from './Components/ModalHistory';
 import './main.css';
 import './fonts/stylesheet.css'
-
+setElementInLocalStorage('enteredCityName', 'Minsk');
 function App() {
     const [data, setData] = useState({});
     const [city, setCity] = useState('');
@@ -75,8 +75,13 @@ function App() {
                         toggleModal={toggleModal}
                     />
                 </div>
-                {!loading && <TodayData data={data}/> }
-                {!loading && <PaintSelectedCity data={data}/>}
+                {!loading ? 
+                    <>
+                        <TodayData data={data}/> 
+                        <PaintSelectedCity data={data}/>
+                    </> :
+                    <h1>ЗАГРУЗКА</h1>
+                }
             </main>
         </>
     );
