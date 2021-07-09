@@ -1,5 +1,5 @@
 import Button from "./Button";
-import PaintModalHistoryItem from "./PaintModalHistoryItem";
+import ModalHistoryItem from "./ModalHistoryItem";
 
 const ModalHistory = ({toggle, toggleModal, clearModalContent, data}) => {
 
@@ -16,7 +16,7 @@ const ModalHistory = ({toggle, toggleModal, clearModalContent, data}) => {
             <div className="modal__content">
                 {data.map((city, index) => {
                     return (
-                        <PaintModalHistoryItem data={city} key={index}/>
+                        <ModalHistoryItem data={city} key={index}/>
                     )
                 })}
             </div>

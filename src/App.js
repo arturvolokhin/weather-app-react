@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Search from './Components/Search'
 import Button from './Components/Button';
 import TodayData from './Components/TodayData';
-import PaintSelectedCity from './Components/PaintSelectedCity'
+import SelectedCity from './Components/SelectedCity'
 import getGeolocation from './Api/getGeolocation';
 import { getElementInLocalStorage, setElementInLocalStorage, updateLocalStorage} from './Api/localStorage';
 import ModalHistory from './Components/ModalHistory';
@@ -78,7 +78,7 @@ function App() {
                 {!loading ? 
                     <>
                         <TodayData data={data}/> 
-                        <PaintSelectedCity data={data}/>
+                        <SelectedCity data={data}/>
                     </> :
                     <h1>ЗАГРУЗКА</h1>
                 }
